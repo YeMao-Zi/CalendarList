@@ -61,37 +61,37 @@ const props = defineProps<{
 
 // const injectCalendarInfo = inject(CalendarKey);
 
-// // Day 组件既是放置源又是拖拽源
-// const [, drag, preview] = useDrag({
-//   type: DragEventTypeEnum.NEW,
-//   item: () => ({
-//     dragTime: props.dateInfo.fullTime,
-//     dateIndex: props.dateInfo.dateIndex,
-//   }),
-//   end: (item, monitor) => {
-//     const didDrap = monitor.didDrop(); // 是否成功拖放
-//     if (didDrap) {
-//       const dropResult: DropResult | null = monitor.getDropResult();
-//       if (dropResult) {
-//         const dragItem = {
-//           dateIndex: item.dateIndex,
-//           time: item.dragTime,
-//         };
-//         const dropItem = {
-//           dateIndex: dropResult.dateIndex,
-//           time: dropResult.dropTime,
-//         };
+// Day 组件既是放置源又是拖拽源
+const [, drag, preview] = useDrag({
+  type: DragEventTypeEnum.NEW,
+  item: () => ({
+    dragTime: props.dateInfo.fullTime,
+    dateIndex: props.dateInfo.dateIndex,
+  }),
+  end: (item, monitor) => {
+    const didDrap = monitor.didDrop(); // 是否成功拖放
+    if (didDrap) {
+      const dropResult: DropResult | null = monitor.getDropResult();
+      if (dropResult) {
+        const dragItem = {
+          dateIndex: item.dateIndex,
+          time: item.dragTime,
+        };
+        const dropItem = {
+          dateIndex: dropResult.dateIndex,
+          time: dropResult.dropTime,
+        };
 
-//         if (dragItem.dateIndex > dropItem.dateIndex) {
-//           // 往前拖拽时
-//           injectCalendarInfo?.createNewEvent(dropItem, dragItem);
-//         } else {
-//           injectCalendarInfo?.createNewEvent(dragItem, dropItem);
-//         }
-//       }
-//     }
-//   },
-// })
+        if (dragItem.dateIndex > dropItem.dateIndex) {
+          // 往前拖拽时
+          injectCalendarInfo?.createNewEvent(dropItem, dragItem);
+        } else {
+          injectCalendarInfo?.createNewEvent(dragItem, dropItem);
+        }
+      }
+    }
+  },
+});
 
 const [dropCollect, drop] = useDrop({
   accept: [
