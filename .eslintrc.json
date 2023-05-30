@@ -1,0 +1,30 @@
+{
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-recommended",
+      "prettier",
+      "plugin:prettier/recommended"
+    ],
+    "plugins": ["vue", "@typescript-eslint"],
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "parser": "@typescript-eslint/parser",
+      "sourceType": "module"
+    },
+    "rules": {
+      "vue/multi-word-component-names": "off", // 创建 vue 组件时，可以使用单个单词
+      "no-unused-vars": [
+        "error",
+        {
+          "varsIgnorePattern": ".*",
+          "args": "none",
+          "vars": "all",
+          "ignoreRestSiblings": true,
+          "argsIgnorePattern": "^_"  // 声明但未使用的变量，当变量名以 _ 为前缀时，可忽略错误
+        }
+      ]
+    }
+  }

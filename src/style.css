@@ -1,0 +1,26 @@
+body {
+  --primary: #000000d9;
+  --secondary: #00000073;
+  --success: #19bc66;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --info: #0673fe;
+  --light: #fb6e23;
+  --dark: #343a40;
+  --white: #fff;
+  --black: #000;
+  --gray-333: #333;
+  --gray-666: #666;
+  --gray-999: #999;
+  --gray-ccc: #ccc;
+  --gray-eee: #eee;
+  --bgColor: #f5f6fa;
+  --borderColor: #dadbde;
+}
+html {
+  box-sizing: border-box;
+}
+#app{
+  height: 500px;
+}
+
